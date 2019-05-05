@@ -16,6 +16,14 @@ from the root dir of this whole project
 
 Don't forget to write your vk token to the `hw_2_qrcode_bot/hw_2.env` file as `VK_API_TOKEN=123` or pass it by `docker-compose run -e VK_API_TOKEN=123`
 
+### How to scale?
+
+Use
+```bash
+docker-compose -f ./hw_2_qrcode_bot/docker_compose.yml up --scale s2_qrcode_img_generator=6
+```
+or something like that
+
 ### How it became such big?
 
 Pretty fast after couple of versions (of beers) 
