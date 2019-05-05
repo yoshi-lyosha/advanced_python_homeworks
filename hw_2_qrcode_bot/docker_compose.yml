@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+  s0_rabbitmq:
+    image: 'rabbitmq:3-management-alpine'
+    ports:
+      - "127.0.0.1:4188:15672"
+
+  s1_coupon_generator:
+    build:
+      context: ../
+      dockerfile: ./hw_2_qrcode_bot/Dockerfile.s1_coupon_generator
+    restart: on-failure
+    depends_on:
+      - s0_rabbitmq
+    env_file:
+      - ./hw_2.env
+    environment:
+      - RABBIT_HOST=s0_rabbitmq
+
+  s2_qrcode_img_generator:
+    build:
+      context: ../
+      dockerfile: ./hw_2_qrcode_bot/Dockerfile.s2_qrcode_img_generator
+    restart: on-failure
+    depends_on:
+      - s0_rabbitmq
+    env_file:
+      - ./hw_2.env
+    environment:
+      - RABBIT_HOST=s0_rabbitmq
+
+  s3_image_uploader:
+    build:
+      context: ../
+      dockerfile: ./hw_2_qrcode_bot/Dockerfile.s3_image_uploader
+    restart: on-failure
+    depends_on:
+      - s0_rabbitmq
+    env_file:
+      - ./hw_2.env
+    environment:
+      - RABBIT_HOST=s0_rabbitmq
+
+  s4_coupon_vk_bot:
+    build:
+      context: ../
+      dockerfile: ./hw_2_qrcode_bot/Dockerfile.s4_coupon_vk_bot
+    restart: on-failure
+    depends_on:
+      - s0_rabbitmq
+    env_file:
+      - ./hw_2.env
+    environment:
+      - RABBIT_HOST=s0_rabbitmq
