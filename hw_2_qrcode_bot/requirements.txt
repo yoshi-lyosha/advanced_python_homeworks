@@ -1,0 +1,6 @@
+pika
+vk-api
+imgkit
+qrcode
+Pillow
+jinja2  # only if you very want to use jinja (but it has no point to do)

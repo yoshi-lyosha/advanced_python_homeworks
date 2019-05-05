@@ -1,0 +1,7 @@
+FROM python:3.7-alpine
+
+COPY ./ /
+RUN pip install -r /hw_2_qrcode_bot/s1_coupon_generator/requirements.txt
+
+ENV PYTHONPATH "${PYTHONPATH}:${PWD}"
+CMD ["python", "hw_2_qrcode_bot/s1_coupon_generator/app.py"]

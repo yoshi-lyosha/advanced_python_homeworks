@@ -1,3 +1,7 @@
 *.db
 .idea/
 __pycache__/
+venv/
+*.jpg
+*.json
+*.env
