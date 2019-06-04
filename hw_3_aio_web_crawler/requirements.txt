@@ -1,0 +1,4 @@
+aiohttp
+sanic
+beautifulsoup4
+aioelasticsearch
